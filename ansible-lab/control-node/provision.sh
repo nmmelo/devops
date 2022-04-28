@@ -1,4 +1,4 @@
-#/bin/sh
+#!/usr/bin/env bash
 sudo yum -y install epel-release
 echo "inicio da instalacao do ansible"
 sudo yum -y install ansible

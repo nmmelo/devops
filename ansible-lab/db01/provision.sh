@@ -1,11 +1,11 @@
 #/bin/sh
-#cat << EOT >> /home/vagrant/.ssh/authorized_keys
-#ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3MFoyTfe243GDS+ibxWP2YeEZHcZt0HTVzhJJ6S/J32CIGeisv3dq1I2NEgPpjWHRfyx8t/qGF27Ajm0p5wgOwJ8nr543E6GRK6WW/Kwcu4UVA/FHD0bJZi0Kod7GIWNVJ0yQSSV8OBiWYIqb6boO48M2vJcBVqhIJmIEje5jEuQ8lq/oa2KGzhVZQADF1Ev1rWsaG8OPJ/O2PlC2/zNfJvj+WBWcn24W7zLsL3yawgGZoSsRJAFf/yghwNFIK+khWQxKaM5CDK0IFjxg4Tbd+yipIoxMDzwTWCx+gU0YWWYo7UQGrv4U/Uk48djWmsWYoYcm6lAoeORnfXBJ5SkF vagrant@control-node
-#EOT
-yum install -y net-tool*
-yum install -y update
-cat <<EOT >> /etc/hosts
-10.1.1.2 control-node
-10.1.1.3 app01
-10.1.1.4 db01
+cat << EOT >> /home/vagrant/.ssh/authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDX+LnROgzQ93i1kO0O1Regm1So5jjE5MG3nU9qD6yvhaZE1opcibx0/Dqark138egMKARAVbNQhNHHBLqnsa7BoICbgGhK0wDPhuJbFwCXwFrg61ZRKAzX8hKGt3ueC1jtNPfL275qzVgPrrtn/X1N9eDnxBJCS4YkX3IzXj+sYU9zjce3GQgkwL5RGEFFEbDL8/XBmzuoy5ZW4aENVuRhedcXBpxvzGUH3qyZcoGC43LmUX9LQlMVpGYqNLR1JvelakVOBjhZFClueWebGCBd24DH+HhERnPog6WPaUu7vHx1SvkIZCvulZNTexHZPHGcSb8va01t16JNEuxNN5+t vagrant@control-node
 EOT
+#yum install -y net-tool*
+#yum install -y update
+#cat <<EOT >> /etc/hosts
+#10.1.1.2 control-node
+#10.1.1.3 app01
+#10.1.1.4 db01
+#EOT

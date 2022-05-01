@@ -40,10 +40,6 @@
         state: directory
         owner: app
         group: app
-    - name: instalacao do git client
-      yum:
-        name: git
-        state: latest
     - name: clone do repositorio notes - app
       git:
         repo: "https://github.com/callicoder/spring-boot-mysql-rest-api-tutorial.git"
@@ -57,6 +53,8 @@
     - name: gerar o pacote de aplicacao
       command: mvn -f /opt/notes/pom.xml package
       become_user: app
+  roles:
+    - configuracao-dafault-so
 
 
 

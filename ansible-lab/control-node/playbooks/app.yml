@@ -42,7 +42,7 @@
       file:
         path: /opt/notes
         state: directory
-        mode: 0775
+        #mode: 0775
         owner: app
         group: app
     - name: clone do repositorio notes - app
@@ -51,38 +51,38 @@
         dest: /opt/notes
         clone: yes
         force: yes
-    - name: Ansible check Main directory.
-      stat:
-        path: /opt/notes/main/
-      register: my_main
-    - name: Ansible check Resources directory.
-      stat:
-        path: /opt/notes/main/resources/
-      register: my_resources
-    - name: "echo if directory main already existed"
-      debug:
-        msg: "the main directory is already existed"
-      when: my_main.stat.exists
-    - name: "echo if directory resources already existed"
-      debug:
-        msg: "the resources directory is already existed"
-      when: my_resources.stat.exists
-    - name: "Ansible Create directory Main if not exists"
-      file:
-        path: /opt/notes/main
-        state: directory
-        mode: 0755
-        group: app
-        owner: app
-      when: my_main.stat.exists == false
-    - name: "Ansible Create directory Resources if not exists"
-      file:
-        path: /opt/notes/main/resources
-        state: directory
-        mode: 0755
-        group: app
-        owner: app
-      when: my_resources.stat.exists == false
+    #- name: Ansible check Main directory.
+    #  stat:
+    #    path: /opt/notes/main/
+    #  register: my_main
+    #- name: Ansible check Resources directory.
+    #  stat:
+    #    path: /opt/notes/main/resources/
+    #  register: my_resources
+    #- name: "echo if directory main already existed"
+    #  debug:
+    #    msg: "the main directory is already existed"
+    #  when: my_main.stat.exists
+    #- name: "echo if directory resources already existed"
+    #  debug:
+    #    msg: "the resources directory is already existed"
+    #  when: my_resources.stat.exists
+    #- name: "Ansible Create directory Main if not exists"
+    #  file:
+    #    path: /opt/notes/main
+    #    state: directory
+    #    mode: 0755
+    #    group: app
+    #    owner: app
+    #  when: my_main.stat.exists == false
+    #- name: "Ansible Create directory Resources if not exists"
+    #  file:
+    #    path: /opt/notes/main/resources
+    #    state: directory
+    #    mode: 0755
+    #    group: app
+    #    owner: app
+    #  when: my_resources.stat.exists == false
     #- name: create directory if they don't exist
     #  file:
     #    path: "{{ item }}"
@@ -93,14 +93,18 @@
     #  loop:
     #    - /opt/notes/target/
     #    - /opt/notes/target/classes/
-    - name: Configurar ficheiro de propriedades para camada de Base de dados
-      template:
-        src: application.properties
-        dest: /opt/notes/main/resources/application.properties
+    #- name: Configurar ficheiro de propriedades para camada de Base de dados
+    #  template:
+    #    src: application.properties
+    #    dest: /opt/notes/target/classes/application.properties
     - name: Configurar ficheiro pom.xml do notes 
       template:
         src: pom.xml
         dest: /opt/notes/pom.xml
+    - name: Configurar ficheiro de propriedades para camada de Base de dados
+      template:
+        src: application.properties
+        dest: /opt/notes/src/main/resources/application.properties
     - name: gerar o pacote de aplicacao
       command: /opt/apache-maven-3.1.0/bin/mvn -f /opt/notes/pom.xml package
       #command: mvn -f /opt/notes/pom.xml package 
@@ -120,7 +124,7 @@
       notify: reload daemon
     - name: Iniciar o serviço notes
       service:
-        nome: notes
+        name: notes
         state: restarted
   roles:
     - configuracao-dafault-so

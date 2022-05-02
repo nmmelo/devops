@@ -5,7 +5,7 @@
   user: vagrant
   become: yes
 
-  Vars:
+  vars:
     - dbhost: "db01"
     - dbname: "notes"
     - dbusername: "notesapp"
@@ -26,18 +26,32 @@
         name: app
         comment: Utilizador de app
         uid: 500
-    - name: instalacao do maven
-      yum:
-        name: maven
-        state: latest
+    #- name: instalacao do maven
+    #  yum:
+    #    name: maven
+    #    state: latest
+    - name: Donwload do maven 
+      get_url:
+        url: https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.1.0/apache-maven-3.1.0-bin.tar.gz
+        dest: /opt/apache-maven-3.1.0-bin.tar.gz
+    - name: Unzip do pacote maven
+      ansible.builtin.unarchive:
+        src: /opt/apache-maven-3.1.0-bin.tar.gz
+        dest: /opt/
+        remote_src: yes
     - name: Instalacao do Java
       yum:
         name: java-1.8.0-openjdk
+        state: latest
+    - name: Instalacao do git
+      yum:
+        name: git
         state: latest
     - name: Criacao do diretorio do APP
       file:
         path: /opt/notes
         state: directory
+        mode: 0775
         owner: app
         group: app
     - name: clone do repositorio notes - app
@@ -46,15 +60,88 @@
         dest: /opt/notes
         clone: yes
         force: yes
-    - name: Configurar arquivo de propriedades para camada de Base de dados
+    - name: Ansible check Main directory.
+      stat:
+        path: /opt/notes/main/
+      register: my_main
+    - name: Ansible check Resources directory.
+      stat:
+        path: /opt/notes/main/resources/
+      register: my_resources
+    - name: "echo if directory main already existed"
+      debug:
+        msg: "the main directory is already existed"
+      when: my_main.stat.exists
+    - name: "echo if directory resources already existed"
+      debug:
+        msg: "the resources directory is already existed"
+      when: my_resources.stat.exists
+    - name: "Ansible Create directory Main if not exists"
+      file:
+        path: /opt/notes/main
+        state: directory
+        mode: 0755
+        group: app
+        owner: app
+      when: my_main.stat.exists == false
+    - name: "Ansible Create directory Resources if not exists"
+      file:
+        path: /opt/notes/main/resources
+        state: directory
+        mode: 0755
+        group: app
+        owner: app
+      when: my_resources.stat.exists == false
+    #- name: create directory if they don't exist
+    #  file:
+    #    path: "{{ item }}"
+    #    state: directory
+    #    owner: app
+    #    group: app
+    #    mode: 0775
+    #  loop:
+    #    - /opt/notes/target/
+    #    - /opt/notes/target/classes/
+    - name: Configurar ficheiro de propriedades para camada de Base de dados
       template:
         src: application.properties
         dest: /opt/notes/main/resources/application.properties
+    - name: Configurar ficheiro de propriedades do notes 
+      template:
+        src: pom.xml
+        dest: /opt/notes/pom.xml
     - name: gerar o pacote de aplicacao
-      command: mvn -f /opt/notes/pom.xml package
+      command: /opt/apache-maven-3.1.0/bin/mvn -f /opt/notes/pom.xml package
+      #command: mvn -f /opt/notes/pom.xml package 
       become_user: app
+    - name: Registrar versão atual do software
+      shell:
+        cmd: /opt/apache-maven-3.1.0/bin/mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -v '\['
+        chdir: /opt/notes/
+      register: app_version
+    - name: Configurar serviço do Systemd
+      template:
+        src: etc/systemd/system/notes.service
+        dest: /etc/systemd/system/notes.service
+        owner: root
+        group: root
+        mode: '0600'
+      notify: reload daemon
+    - name: Iniciar o serviço notes
+      service:
+        nome: notes
+        state: restarted
   roles:
     - configuracao-dafault-so
+  handlers:
+    - name: reload app
+      systemd:
+        state: restarted
+        daemon_reload: yes
+        name: 'notes'
+    - name: reload daemon
+      systemd:
+        daemon_reexec: yes
 
 
 

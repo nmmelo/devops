@@ -1,0 +1,49 @@
+---
+- name: configurar servidor de docker
+  hosts: docker01
+
+  user: vagrant
+  become: yes
+
+  tasks:
+    - name: upgrade de todos os pacotes do s.o
+      yum:
+        name: "*"
+        state: latest
+    - name: instalacao do git client
+      yum:
+        name: git
+        state: latest
+    - name: Ansible check .SSH Directory.
+      stat:
+        path: /home/vagrant/.ssh/
+      register: my_ssh
+    - name: "echo if directory main already existed"
+      debug:
+        msg: "the .ssh directory is already existed"
+      when: my_ssh.stat.exists
+    - name: configurar hosts lab ansible
+      lineinfile:
+        dest: /etc/hosts
+        state: present
+        line: "{{item}}"
+      with_items:
+        - 10.1.1.2 control-node
+        - 10.1.1.3 app01
+        - 10.1.1.4 db01
+        - 10.1.1.5 docker01
+    - name: Criar o ficheiro /home/vagrant/.ssh/authorized_keys
+      file:
+        path: "/home/vagrant/.ssh/authorized_keys"
+        state: touch
+    - name: adicionar os id rsa public
+      lineinfile:
+        dest: /home/vagrant/.ssh/authorized_keys
+        state: present
+        line: "{{item}}"
+      with_items:
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDX+LnROgzQ93i1kO0O1Regm1So5jjE5MG3nU9qD6yvhaZE1opcibx0/Dqark138egMKARAVbNQhNHHBLqnsa7BoICbgGhK0wDPhuJbFwCXwFrg61ZRKAzX8hKGt3ueC1jtNPfL275qzVgPrrtn/X1N9eDnxBJCS4YkX3IzXj+sYU9zjce3GQgkwL5RGEFFEbDL8/XBmzuoy5ZW4aENVuRhedcXBpxvzGUH3qyZcoGC43LmUX9LQlMVpGYqNLR1JvelakVOBjhZFClueWebGCBd24DH+HhERnPog6WPaUu7vHx1SvkIZCvulZNTexHZPHGcSb8va01t16JNEuxNN5+t vagrant@control-node"
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDONNRy/4kel02uHn6hH1hjKTsl6yzwF/ZyRgcDie9CEi/Q8Q5g3/VVtGOXaLmn/U9R0rQwB88wc8aJYrsSCNT3cUNTq9p1OqLu6EtlNVLIUPDswh+VF35h0upHwdEzYSlGec8gz2m3DaNz6tWU2feRFQ5kkumDbJaZX0JtTIKumvRmFKyYzsN52Pev6BkLgAxcE8zTAUsqkup1YnjgvFKs/tVKeVMMfR6k+qyHrLm8CPo2dHJPTLqdekvWyl1dC9u7GDVqvVCkgLP0h5UX5BMvXznZx7zHhUb0q0vY21APmFN9KqhZ5HDPDbN9M2nSUg+3fvhr7xOUZFlznSS1JS3/ vagrant@app01" 
+
+  roles:
+    - configuracao-dafault-so

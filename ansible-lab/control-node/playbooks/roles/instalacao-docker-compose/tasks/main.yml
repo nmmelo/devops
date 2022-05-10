@@ -1,0 +1,18 @@
+- name: Copiar o /usr/local/bin/docker-compose
+  shell: curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  args:
+    warn: false
+
+- name: Change permission on docker-compose file
+  file:
+    path: /usr/local/bin/docker-compose
+    state: file
+    owner: root
+    group: root
+    mode: a+x
+
+- name: Create symbolic link 
+  file:
+    src: "/usr/local/bin/docker-compose"
+    dest: "/usr/bin/docker-compose"
+    state: link

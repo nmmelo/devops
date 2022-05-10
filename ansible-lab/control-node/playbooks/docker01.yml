@@ -6,14 +6,14 @@
   become: yes
 
   tasks:
-    - name: upgrade de todos os pacotes do s.o
-      yum:
-        name: "*"
-        state: latest
-    - name: instalacao do git client
-      yum:
-        name: git
-        state: latest
+    #- name: upgrade de todos os pacotes do s.o
+    #  yum:
+    #    name: "*"
+    #    state: latest
+    #- name: instalacao do git client
+    #  yum:
+    #    name: git
+    #    state: latest
     - name: Ansible check .SSH Directory.
       stat:
         path: /home/vagrant/.ssh/
@@ -44,6 +44,6 @@
       with_items:
         - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDX+LnROgzQ93i1kO0O1Regm1So5jjE5MG3nU9qD6yvhaZE1opcibx0/Dqark138egMKARAVbNQhNHHBLqnsa7BoICbgGhK0wDPhuJbFwCXwFrg61ZRKAzX8hKGt3ueC1jtNPfL275qzVgPrrtn/X1N9eDnxBJCS4YkX3IzXj+sYU9zjce3GQgkwL5RGEFFEbDL8/XBmzuoy5ZW4aENVuRhedcXBpxvzGUH3qyZcoGC43LmUX9LQlMVpGYqNLR1JvelakVOBjhZFClueWebGCBd24DH+HhERnPog6WPaUu7vHx1SvkIZCvulZNTexHZPHGcSb8va01t16JNEuxNN5+t vagrant@control-node"
         - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDONNRy/4kel02uHn6hH1hjKTsl6yzwF/ZyRgcDie9CEi/Q8Q5g3/VVtGOXaLmn/U9R0rQwB88wc8aJYrsSCNT3cUNTq9p1OqLu6EtlNVLIUPDswh+VF35h0upHwdEzYSlGec8gz2m3DaNz6tWU2feRFQ5kkumDbJaZX0JtTIKumvRmFKyYzsN52Pev6BkLgAxcE8zTAUsqkup1YnjgvFKs/tVKeVMMfR6k+qyHrLm8CPo2dHJPTLqdekvWyl1dC9u7GDVqvVCkgLP0h5UX5BMvXznZx7zHhUb0q0vY21APmFN9KqhZ5HDPDbN9M2nSUg+3fvhr7xOUZFlznSS1JS3/ vagrant@app01" 
-
   roles:
     - configuracao-dafault-so
+    - instalacao-docker-compose

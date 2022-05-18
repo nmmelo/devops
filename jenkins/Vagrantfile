@@ -1,14 +1,11 @@
-Vagrant.config("2") do config
-    config.vm.provision "shell", inline: "Executar a criação da VM Jenkins"
-    config.vm.define "jenkins" do |jenkins|
-        jenkins.vm.box = "centos/7"
-        jenkins.vm.hostname = "jenkins-srv01"
-        jenkins.vm.provision "shell", path: "provision.sh"
-        jenkins.vm.network "private_network", ip:10.2.1.11
-        jenkins.vm.network "forwarded_port", guest:8080, host:8080, hostip:"127.0.0.1"
-        jenkins.vm.network "forwarded_port", guest:8091, host:8091, hostip:"127.0.0.1"
-        jenkins.vm.provider 'virtualbox' do |v|
-            vm.memory = 2048
-        end
+Vagrant.configure("2") do |config|
+    config.vm.box = 'centos/7'
+    config.vm.hostname = 'jenkins'
+    config.vm.network 'forwarded_port', guest: 8080, host: 8080, hostip: '127.0.0.1'
+    config.vm.network 'forwarded_port', guest: 8091, host: 8091, hostip: '127.0.0.1'
+    config.vm.network "private_network", ip: "10.2.1.11"
+    config.vm.provision 'shell', path: 'provision.sh'
+    config.vm.provider 'virtualbox' do |v| 
+        v.memory =2048
     end
 end

@@ -36,6 +36,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 systemctl daemon reload
 systemctl restart docker
+#O jenkins não consegue aceder ao docker, neste caso temos que inserior o user jenkins no grupo do docker
 usermod -aG docker jenkins
 
 #Instalar o sonarqube scanner

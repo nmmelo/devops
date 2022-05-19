@@ -38,6 +38,7 @@ systemctl daemon reload
 systemctl restart docker
 #O jenkins não consegue aceder ao docker, neste caso temos que inserior o user jenkins no grupo do docker
 usermod -aG docker jenkins
+sudo chmod 666 /var/run/docker.sock
 
 #Instalar o sonarqube scanner
 wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip

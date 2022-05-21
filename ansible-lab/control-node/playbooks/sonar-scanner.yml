@@ -20,11 +20,13 @@
         dest: /opt/
         remote_src: yes
     - name: stat sonar-scanner
-      stat: path=/opt/sonar-scanner
+      ansible.build.stat: 
+          path=/opt/sonar-scanner
       register: sonar-scanner_stat
     - name: Alterar o nome da pasta sonar
-      command: mv /opt/sonar-scanner-cli-4.6.2.2472-linux /opt/sonar-scanner
-      when: sonar-scanner_stat.stat.exists
+      command: 
+        mv /opt/sonar-scanner-cli-4.6.2.2472-linux /opt/sonar-scanner
+      when: sonar-scanner_stat.stat.exists == false
     - name: Change permission da pasta sonar-scanner
       file:
         path: /opt/sonar-scanner
@@ -38,7 +40,7 @@
         state: present
         line: "{{item}}"
       with_items:
-        - export PATH=$PATH:/opt/sonar-scanner/bin
+        - export PATH=$PATH:/opt/sonar-scanner/bi
   roles:
     - configuracao-dafault-so
 

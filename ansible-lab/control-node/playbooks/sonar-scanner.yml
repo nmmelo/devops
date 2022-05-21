@@ -1,0 +1,47 @@
+---
+- name: instalar o sonar-scanner no Jenkins Server Master
+  hosts: jenkins
+
+  user: vagrant
+  become: yes
+  
+  tasks:
+    - name: instalacao do unzip
+      yum:
+        name: unzip
+        state: latest
+    - name: Donwload do sonar-scanner 
+      get_url:
+        url: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+        dest: /opt/sonar-scanner-cli-4.6.2.2472-linux.zip
+    - name: Unzip do pacote sonar-scanner
+      ansible.builtin.unarchive:
+        src: /opt/sonar-scanner-cli-4.6.2.2472-linux.zip
+        dest: /opt/
+        remote_src: yes
+    - name: stat sonar-scanner
+      stat: path=/opt/sonar-scanner
+      register: sonar-scanner_stat
+    - name: Alterar o nome da pasta sonar
+      command: mv /opt/sonar-scanner-cli-4.6.2.2472-linux /opt/sonar-scanner
+      when: sonar-scanner_stat.stat.exists
+    - name: Change permission da pasta sonar-scanner
+      file:
+        path: /opt/sonar-scanner
+        state: directory
+        owner: jenkins
+        group: jenkins
+        mode: a+x
+    - name: configurar hosts lab ansible
+      lineinfile:
+        dest: /etc/profile
+        state: present
+        line: "{{item}}"
+      with_items:
+        - export PATH=$PATH:/opt/sonar-scanner/bin
+  roles:
+    - configuracao-dafault-so
+
+
+
+    

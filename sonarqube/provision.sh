@@ -40,13 +40,15 @@ Restart=always
 WantedBy=multi-user.target
 EOT
 service sonar start
+sudo systemctl enable sonar
+
 
 #Instalar o sonarqube scanner
 
 wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
 unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d /opt/
 mv /opt/sonar-scanner-cli-4.7.0.2747-linux /opt/sonar-scanner/
-chown -R /opt/sonar-scanner/
+sudo chown -R sonar:sonar /opt/sonar-scanner/
 
 echo 'export PATH=$PATH:/opt/sonar-scanner/bin' | sudo  tee -a /etc/profile
 #Instalar o node.js para o nosso teste

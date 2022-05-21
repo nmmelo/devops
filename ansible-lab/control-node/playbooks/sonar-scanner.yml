@@ -20,13 +20,13 @@
         dest: /opt/
         remote_src: yes
     - name: stat sonar-scanner
-      ansible.build.stat: 
+      ansible.builtin.stat: 
           path=/opt/sonar-scanner
-      register: sonar-scanner_stat
+      register: sonarstat
     - name: Alterar o nome da pasta sonar
       command: 
         mv /opt/sonar-scanner-cli-4.6.2.2472-linux /opt/sonar-scanner
-      when: sonar-scanner_stat.stat.exists == false
+      when: sonarstat.stat.isdir is not defined
     - name: Change permission da pasta sonar-scanner
       file:
         path: /opt/sonar-scanner
@@ -34,13 +34,15 @@
         owner: jenkins
         group: jenkins
         mode: a+x
-    - name: configurar hosts lab ansible
+      when: sonarstat.stat.isdir is not defined
+    - name: Alterar o profile 
       lineinfile:
         dest: /etc/profile
         state: present
         line: "{{item}}"
       with_items:
         - export PATH=$PATH:/opt/sonar-scanner/bi
+      when: sonarstat.stat.isdir is not defined
   roles:
     - configuracao-dafault-so
 

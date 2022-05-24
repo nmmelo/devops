@@ -26,7 +26,18 @@
     - name: Alterar o nome da pasta sonar
       command: 
         mv /opt/sonar-scanner-cli-4.6.2.2472-linux /opt/sonar-scanner
-      when: sonarstat.stat.isdir is not defined
+    - name: Instalar o repositorio de nodejs
+      command: curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
+    - name: Fazer o refresh do yum 
+      command: sudo yum clean all && sudo yum makecache fast
+    - name: instalacao do gcc
+      yum:
+        name: gcc-c++
+        state: latest
+    - name: Instalação do make
+      yum:
+        name: make
+        state: latest
     - name: Change permission da pasta sonar-scanner
       file:
         path: /opt/sonar-scanner

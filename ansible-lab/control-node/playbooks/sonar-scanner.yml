@@ -23,6 +23,10 @@
       ansible.builtin.stat: 
           path=/opt/sonar-scanner
       register: sonarstat
+    - name: stat da pasta /opt/sonar-scanner-cli-4.6.2.2472-linux
+      ansible.builtin.stat: 
+          path=/opt/sonar-scanner-cli-4.6.2.2472-linux
+      register: sonarscannerdir
     - name: Alterar o nome da pasta sonar
       command: 
         mv /opt/sonar-scanner-cli-4.6.2.2472-linux /opt/sonar-scanner
@@ -46,6 +50,15 @@
         group: jenkins
         mode: a+x
       when: sonarstat.stat.isdir is not defined
+    - name: apagar o ficheiro sonar-scanner-cli-4.6.2.2472-linux.zip
+      ansible.builtin.file:
+        path: /opt/sonar-scanner-cli-4.6.2.2472-linux.zip
+        state: absent
+    - name: Recursively remove directory
+      ansible.builtin.file:
+        path: /opt/sonar-scanner-4.6.2.2472-linux
+        state: absent
+      when: sonarscannerdir.stat
     - name: Alterar o profile 
       lineinfile:
         dest: /etc/profile

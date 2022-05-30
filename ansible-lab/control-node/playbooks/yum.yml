@@ -1,0 +1,24 @@
+---
+- name: instalar o git, unzip, telnet e o net-tools
+  hosts: manager
+
+  user: vagrant
+  become: yes
+  
+  tasks:
+    - name: instalacao do unzip
+      yum:
+        name: unzip
+        state: latest
+    - name: instalacao do git
+      yum:
+        name: git
+        state: latest
+    - name: instalacao do telnet
+      yum:
+        name: telnet
+        state: latest
+    - name: instalacao do net-tools
+      yum:
+        name: net-tools
+        state: latest

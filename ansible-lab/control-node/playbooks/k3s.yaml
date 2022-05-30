@@ -1,0 +1,44 @@
+---
+- name: instalar o  k3s - manager
+  hosts: manager
+
+  user: vagrant
+  become: yes
+  
+  tasks:
+    - name: instalacao do unzip
+      yum:
+        name: unzip
+        state: latest
+    - name: Download do script para instalação do k3s
+      command: curl -s https://get.k3s.io -o /root/k3s.sh
+      args:
+        warn: false
+      become: true
+    - name: alterar permissões do ficheiro k3s.sh
+      command: chmod 775 /root/k3s.sh
+      args:
+        warn: false
+      become: true
+    - name: Instalar o K3s manager
+      command: sh /root/k3s.sh -s - --cluster-init --tls-san 10.3.1.2 --node-ip 10.3.1.2 --node-external-ip 10.3.1.2
+      become: true
+      register: install_k3s
+    - name: Ver o output da instalação do k3s
+      debug:
+        var: 
+          install_k3s.stdout
+    - name: stat k3s stat
+      ansible.builtin.stat: 
+          path=/var/lib/rancher/k3s
+      register: k3s_stat
+    - name: Alterar o profile 
+      lineinfile:
+        dest: /etc/profile
+        state: present
+        line: "{{item}}"
+      with_items:
+        - export PATH=$PATH:/var/lib/rancher/k3s/data/current/bin
+      when: k3s.stat.isdir is not defined
+  roles:
+    - configuracao-dafault-so

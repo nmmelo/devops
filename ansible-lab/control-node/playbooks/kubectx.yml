@@ -1,0 +1,57 @@
+---
+- name: Instalar e configurar o kubectl e do bash-completion -y
+  hosts: manager
+
+  user: vagrant
+  become: yes
+ 
+  tasks:
+    - name: Criacao do diretorio do kubectx
+      file:
+        path: /opt/kubectx
+        state: directory
+        mode: 0775
+        owner: vagrant
+        group: vagrant
+    - name: clone do repositorio kubectx - app
+      git:
+        repo: "https://github.com/ahmetb/kubectx"
+        dest: /opt/kubectx
+        clone: yes
+        force: yes
+    - name: criar ln -s para o kubectx
+      command: ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+      args:
+        warn: false
+      become: true
+      ignore_errors: true
+    - name: criar ln -s para o kubens
+      command: ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+      args:
+        warn: false
+      become: true
+      ignore_errors: true
+    - name: instalacao do bash-completion 
+      yum:
+        name: unzip
+        state: latest
+    #- name: adicionar ao .bashrc
+    #  command: sudo echo 'source <(kubectl completion bash)' >> /root/.bashrc
+    #  become: true
+    - name: criar o ficheiro /etc/bash_completion.d/kubectl
+      shell: /var/lib/rancher/k3s/data/current/bin/kubectl completion bash >/etc/bash_completion.d/kubectl
+      ignore_errors: true
+      become: true
+    #- name: adicionar conteudo ao .bashrc
+    #  command: sudo echo 'complete -F __start_kubectl k' >> /root/.bashrc
+    #  become: true
+    - name: adicionar conteudo ao .bashrc
+      lineinfile:
+        dest: /root/.bashrc
+        state: present
+        line: "{{item}}"
+      with_items:
+        - complete -F __start_kubectl k
+        - source <(kubectl completion bash)
+  #roles:
+  #  - configuracao-dafault-so

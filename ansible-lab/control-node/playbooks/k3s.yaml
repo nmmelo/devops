@@ -39,6 +39,15 @@
         line: "{{item}}"
       with_items:
         - export PATH=$PATH:/var/lib/rancher/k3s/data/current/bin
-      when: k3s.stat.isdir is not defined
+    - name: Alterar o profile do root
+      lineinfile:
+        dest: /root/.bash_profile
+        state: present
+        line: "{{item}}"
+      with_items:
+        - export PATH=$PATH:/var/lib/rancher/k3s/data/current/bin
+    - name:  Criar um alias para o kubectl
+      command: echo 'alias k=kubectl' >> /root/.bash_profile
+      become: true
   roles:
     - configuracao-dafault-so

@@ -1,0 +1,53 @@
+---
+- name: instalar o  k3s - worker1
+  hosts: manager
+
+  user: vagrant
+  become: yes
+  
+  tasks:
+    - name: instalacao do unzip
+      yum:
+        name: unzip
+        state: latest
+    - name: Download do script para instalação do k3s
+      command: curl -s https://get.k3s.io -o /root/k3s.sh
+      args:
+        warn: false
+      become: true
+    - name: alterar permissões do ficheiro k3s.sh
+      command: chmod 775 /root/k3s.sh
+      args:
+        warn: false
+      become: true
+    - name: Instalar o K3s worker
+      command: sh /root/k3s.sh K3S_URL=https://10.3.1.2:6443 K3S_TOKEN=K1087bb3f47171c145202dc6640ac1d56850f6fb8c4ae06c40393f040718c890f22::server:c39648848a4a0e218dce603a27c61986 sh -s - --node-ip 10.3.1.3 --node-external-ip 10.3.1.3
+      become: true
+      register: install_k3s
+    - name: Ver o output da instalação do k3s
+      debug:
+        var: 
+          install_k3s.stdout
+    - name: stat k3s stat
+      ansible.builtin.stat: 
+          path=/var/lib/rancher/k3s
+      register: k3s_stat
+    - name: Alterar o profile 
+      lineinfile:
+        dest: /etc/profile
+        state: present
+        line: "{{item}}"
+      with_items:
+        - export PATH=$PATH:/var/lib/rancher/k3s/data/current/bin
+    - name: Alterar o profile do root
+      lineinfile:
+        dest: /root/.bash_profile
+        state: present
+        line: "{{item}}"
+      with_items:
+        - export PATH=$PATH:/var/lib/rancher/k3s/data/current/bin
+    - name:  Criar um alias para o kubectl
+      command: echo 'alias k=kubectl' >> /root/.bash_profile
+      become: true
+  roles:
+    - configuracao-dafault-so

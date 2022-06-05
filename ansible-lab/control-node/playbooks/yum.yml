@@ -1,6 +1,6 @@
 ---
 - name: instalar o git, unzip, telnet e o net-tools
-  hosts: manager
+  hosts: worker1
 
   user: vagrant
   become: yes

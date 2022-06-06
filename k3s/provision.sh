@@ -11,4 +11,6 @@ cat <<EOT >> /etc/hosts
 10.2.1.10 sonar
 10.2.1.11 jenkins-srv01
 10.3.1.2 manager
+10.3.1.3 worker1
+10.3.1.4 prometheus
 EOT

@@ -1,0 +1,19 @@
+---
+- name: httpd and telnet
+  hosts: client1
+
+  tasks:
+  - name: Install httpd
+    yum:
+     name: httpd
+     state: present
+
+  - name: Start httpd
+    yum:
+     name: httpd
+     state: started
+
+  - name: Install telnet
+    yum:
+     name: telnet
+     state: present

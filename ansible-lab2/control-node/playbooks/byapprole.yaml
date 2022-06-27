@@ -1,0 +1,7 @@
+---
+- name: Install package
+  hosts: client1
+  roles:
+  - apache
+  - ntp
+  - named

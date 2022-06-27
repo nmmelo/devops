@@ -1,0 +1,14 @@
+version: "3.5"
+
+services:
+  grafana8:
+    image: grafana/grafana:latest
+    network_mode: "bridge"
+    container_name: grafana8
+    user: "472"
+    volumes:
+      - /volume1/docker/grafana/conf:/var/lib/grafana
+      - /volume1/docker/grafana/plugins:/var/lib/grafana/plugins
+    ports:
+      - "3000:3000"
+    restart: always

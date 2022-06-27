@@ -1,0 +1,9 @@
+---
+- name: change the permissions file
+  hosts: client1
+
+  tasks:
+  - name: File permissions
+    file:
+     path: /home/vagrant/linux2
+     mode: a+w

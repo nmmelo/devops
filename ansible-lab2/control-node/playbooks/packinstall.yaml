@@ -1,0 +1,18 @@
+---
+- name: Installing And Running Apache
+  hosts: client1
+  become: yes
+  become_user: root
+
+  tasks:
+  - name: Install Apache
+    yum:
+     name: httpd
+     state: present
+  
+  - name: Start httpd
+    service:
+     name: httpd
+     state: started
+     enable: yes
+

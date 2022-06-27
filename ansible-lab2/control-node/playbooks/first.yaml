@@ -1,0 +1,10 @@
+---
+
+- name: "My First Playbook"
+  hosts: all
+  become: yes
+  become_user: root
+
+  tasks:
+  - name: "Test connectivity"
+    ping: 

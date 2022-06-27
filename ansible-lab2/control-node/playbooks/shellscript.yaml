@@ -1,0 +1,16 @@
+---
+- name: Playbook for shell script
+  hosts: all or 10.1.1.3
+
+  tasks:
+  - name: Copying file
+    become: true
+    copy:
+     src: /home/vagrant/cfile.sh
+     dest: /home/vagrant
+     owner: vagrant
+     group: vagrant
+     mode: 0775
+     backup: yes
+  - name: Run shell script
+    shell: "/home/vagrant/cfile.sh"

@@ -1,0 +1,16 @@
+---
+- name: Setup apache server
+  hosts: client1
+
+  tasks:
+  - name: install httpd package
+    yum:
+     name: httpd
+     state: present
+    tags: i-httpd
+  
+  - name: started httpd service
+    service:
+     name: httpd
+     state: started
+    tags: s-httpd

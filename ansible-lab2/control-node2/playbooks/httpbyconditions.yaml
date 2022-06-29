@@ -1,0 +1,16 @@
+---
+- name: Install Apache webserver
+  hosts: client1
+
+  tasks:
+   - name: install Apache on Ubuntu Server
+     apt:
+      name: apache2
+      state: present
+     when: ansible_os_family == "Ubuntu"
+  
+   - name: Install Apache on Centos Server
+     yum:
+      name: httpd
+      state: present
+     when: ansible_os_family == "RedHat"

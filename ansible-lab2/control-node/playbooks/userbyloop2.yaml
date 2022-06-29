@@ -1,0 +1,13 @@
+---
+- name: Create user thru loop v2
+  hosts: client1
+  vars:
+    users: [duarte, pedro, marlene]
+  
+  tasks:
+  - name: Create users
+    user:
+     name: '{{ item }}'
+     home: /home/{{ item }}
+     shell: /bin/bash
+    with_items: '{{ users }}'

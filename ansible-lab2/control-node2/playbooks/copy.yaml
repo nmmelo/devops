@@ -1,0 +1,14 @@
+---
+- name: Copy file from local to remote clients
+  hosts: all
+
+  tasks:
+  - name: Copying file
+    become: true
+    copy:
+     src: /etc/ansible/templates/some.cfg
+     dest: /tmp
+     owner: vagrant
+     group: vagrant
+     mode: 0644
+     backup: yes

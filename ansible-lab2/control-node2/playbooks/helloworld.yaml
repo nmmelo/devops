@@ -1,0 +1,10 @@
+---
+- name: "My second playbook"
+  hosts: all
+
+  tasks:
+  - name: "Print Hello World"
+    debug: msg="Hello World"
+  - name: "Second Print Hello World"
+    debug:
+      msg: "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"

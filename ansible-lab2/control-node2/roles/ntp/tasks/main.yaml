@@ -1,0 +1,5 @@
+---
+- name: Install NTP package
+  yum:
+   name: chrony
+   state: present

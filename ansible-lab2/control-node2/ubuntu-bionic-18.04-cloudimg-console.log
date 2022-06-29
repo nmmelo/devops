@@ -1,0 +1,649 @@
+[    0.000000] Linux version 4.15.0-187-generic (buildd@lcy02-amd64-046) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #198-Ubuntu SMP Tue Jun 14 03:23:51 UTC 2022 (Ubuntu 4.15.0-187.198-generic 4.15.18)
+[    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-4.15.0-187-generic root=LABEL=cloudimg-rootfs ro console=tty1 console=ttyS0
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+[    0.000000]   Centaur CentaurHauls
+[    0.000000] x86/fpu: x87 FPU will use FXSAVE
+[    0.000000] e820: BIOS-provided physical RAM map:
+[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+[    0.000000] BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x00000000dffeffff] usable
+[    0.000000] BIOS-e820: [mem 0x00000000dfff0000-0x00000000dfffffff] ACPI data
+[    0.000000] BIOS-e820: [mem 0x00000000fec00000-0x00000000fec00fff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000fee00000-0x00000000fee00fff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000100000000-0x000000011fffffff] usable
+[    0.000000] NX (Execute Disable) protection: active
+[    0.000000] SMBIOS 2.5 present.
+[    0.000000] DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[    0.000000] Hypervisor detected: KVM
+[    0.000000] e820: last_pfn = 0x120000 max_arch_pfn = 0x400000000
+[    0.000000] MTRR: Disabled
+[    0.000000] x86/PAT: MTRRs disabled, skipping PAT initialization too.
+[    0.000000] CPU MTRRs all blank - virtualized system.
+[    0.000000] x86/PAT: Configuration [0-7]: WB  WT  UC- UC  WB  WT  UC- UC  
+[    0.000000] e820: last_pfn = 0xdfff0 max_arch_pfn = 0x400000000
+[    0.000000] found SMP MP-table at [mem 0x0009fff0-0x0009ffff]
+[    0.000000] Scanning 1 areas for low memory corruption
+[    0.000000] RAMDISK: [mem 0x359c9000-0x36cdbfff]
+[    0.000000] ACPI: Early table checksum verification disabled
+[    0.000000] ACPI: RSDP 0x00000000000E0000 000024 (v02 VBOX  )
+[    0.000000] ACPI: XSDT 0x00000000DFFF0030 00003C (v01 VBOX   VBOXXSDT 00000001 ASL  00000061)
+[    0.000000] ACPI: FACP 0x00000000DFFF00F0 0000F4 (v04 VBOX   VBOXFACP 00000001 ASL  00000061)
+[    0.000000] ACPI: DSDT 0x00000000DFFF0470 002325 (v02 VBOX   VBOXBIOS 00000002 INTL 20100528)
+[    0.000000] ACPI: FACS 0x00000000DFFF0200 000040
+[    0.000000] ACPI: FACS 0x00000000DFFF0200 000040
+[    0.000000] ACPI: APIC 0x00000000DFFF0240 00005C (v02 VBOX   VBOXAPIC 00000001 ASL  00000061)
+[    0.000000] ACPI: SSDT 0x00000000DFFF02A0 0001CC (v01 VBOX   VBOXCPUT 00000002 INTL 20100528)
+[    0.000000] ACPI: Reserving FACP table memory at [mem 0xdfff00f0-0xdfff01e3]
+[    0.000000] ACPI: Reserving DSDT table memory at [mem 0xdfff0470-0xdfff2794]
+[    0.000000] ACPI: Reserving FACS table memory at [mem 0xdfff0200-0xdfff023f]
+[    0.000000] ACPI: Reserving FACS table memory at [mem 0xdfff0200-0xdfff023f]
+[    0.000000] ACPI: Reserving APIC table memory at [mem 0xdfff0240-0xdfff029b]
+[    0.000000] ACPI: Reserving SSDT table memory at [mem 0xdfff02a0-0xdfff046b]
+[    0.000000] No NUMA configuration found
+[    0.000000] Faking a node at [mem 0x0000000000000000-0x000000011fffffff]
+[    0.000000] NODE_DATA(0) allocated [mem 0x11ffd1000-0x11fffbfff]
+[    0.000000] kvm-clock: cpu 0, msr 1:1ff50001, primary cpu clock
+[    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+[    0.000000] kvm-clock: using sched offset of 6018156382 cycles
+[    0.000000] clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000000001000-0x0000000000ffffff]
+[    0.000000]   DMA32    [mem 0x0000000001000000-0x00000000ffffffff]
+[    0.000000]   Normal   [mem 0x0000000100000000-0x000000011fffffff]
+[    0.000000]   Device   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000001000-0x000000000009efff]
+[    0.000000]   node   0: [mem 0x0000000000100000-0x00000000dffeffff]
+[    0.000000]   node   0: [mem 0x0000000100000000-0x000000011fffffff]
+[    0.000000] Reserved but unavailable: 104 pages
+[    0.000000] Initmem setup node 0 [mem 0x0000000000001000-0x000000011fffffff]
+[    0.000000] ACPI: PM-Timer IO Port: 0x4008
+[    0.000000] IOAPIC[0]: apic_id 2, version 32, address 0xfec00000, GSI 0-23
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 low level)
+[    0.000000] Using ACPI (MADT) for SMP configuration information
+[    0.000000] smpboot: Allowing 2 CPUs, 0 hotplug CPUs
+[    0.000000] PM: Registered nosave memory: [mem 0x00000000-0x00000fff]
+[    0.000000] PM: Registered nosave memory: [mem 0x0009f000-0x0009ffff]
+[    0.000000] PM: Registered nosave memory: [mem 0x000a0000-0x000effff]
+[    0.000000] PM: Registered nosave memory: [mem 0x000f0000-0x000fffff]
+[    0.000000] PM: Registered nosave memory: [mem 0xdfff0000-0xdfffffff]
+[    0.000000] PM: Registered nosave memory: [mem 0xe0000000-0xfebfffff]
+[    0.000000] PM: Registered nosave memory: [mem 0xfec00000-0xfec00fff]
+[    0.000000] PM: Registered nosave memory: [mem 0xfec01000-0xfedfffff]
+[    0.000000] PM: Registered nosave memory: [mem 0xfee00000-0xfee00fff]
+[    0.000000] PM: Registered nosave memory: [mem 0xfee01000-0xfffbffff]
+[    0.000000] PM: Registered nosave memory: [mem 0xfffc0000-0xffffffff]
+[    0.000000] e820: [mem 0xe0000000-0xfebfffff] available for PCI devices
+[    0.000000] Booting paravirtualized kernel on KVM
+[    0.000000] clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645519600211568 ns
+[    0.000000] random: get_random_bytes called from start_kernel+0x99/0x500 with crng_init=0
+[    0.000000] setup_percpu: NR_CPUS:8192 nr_cpumask_bits:2 nr_cpu_ids:2 nr_node_ids:1
+[    0.000000] percpu: Embedded 50 pages/cpu s167936 r8192 d28672 u1048576
+[    0.000000] PV qspinlock hash table entries: 256 (order: 0, 4096 bytes)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 1032057
+[    0.000000] Policy zone: Normal
+[    0.000000] Kernel command line: BOOT_IMAGE=/boot/vmlinuz-4.15.0-187-generic root=LABEL=cloudimg-rootfs ro console=tty1 console=ttyS0
+[    0.000000] Memory: 4013252K/4193848K available (12300K kernel code, 2484K rwdata, 4324K rodata, 2468K init, 2724K bss, 180596K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] ftrace: allocating 39513 entries in 155 pages
+[    0.004000] Hierarchical RCU implementation.
+[    0.004000] 	RCU restricting CPUs from NR_CPUS=8192 to nr_cpu_ids=2.
+[    0.004000] 	Tasks RCU enabled.
+[    0.004000] RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.004000] NR_IRQS: 524544, nr_irqs: 440, preallocated irqs: 16
+[    0.004000] Console: colour VGA+ 80x25
+[    0.004000] console [tty1] enabled
+[    0.004000] console [ttyS0] enabled
+[    0.004000] ACPI: Core revision 20170831
+[    0.004000] ACPI: 2 ACPI AML tables successfully acquired and loaded
+[    0.004000] APIC: Switch to symmetric I/O mode setup
+[    0.004000] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+[    0.004000] tsc: Detected 2304.006 MHz processor
+[    0.004000] Calibrating delay loop (skipped) preset value.. 4608.01 BogoMIPS (lpj=9216024)
+[    0.004000] pid_max: default: 32768 minimum: 301
+[    0.004000] Security Framework initialized
+[    0.004000] Yama: becoming mindful.
+[    0.004000] AppArmor: AppArmor initialized
+[    0.004000] Dentry cache hash table entries: 524288 (order: 10, 4194304 bytes)
+[    0.004000] Inode-cache hash table entries: 262144 (order: 9, 2097152 bytes)
+[    0.004000] Mount-cache hash table entries: 8192 (order: 4, 65536 bytes)
+[    0.004000] Mountpoint-cache hash table entries: 8192 (order: 4, 65536 bytes)
+[    0.005669] Last level iTLB entries: 4KB 64, 2MB 8, 4MB 8
+[    0.008000] Last level dTLB entries: 4KB 64, 2MB 0, 4MB 0, 1GB 4
+[    0.008000] Spectre V1 : Mitigation: usercopy/swapgs barriers and __user pointer sanitization
+[    0.008000] Spectre V2 : Mitigation: Enhanced IBRS
+[    0.008000] Spectre V2 : Spectre v2 / SpectreRSB mitigation: Filling RSB on context switch
+[    0.008000] Speculative Store Bypass: Vulnerable
+[    0.008000] MMIO Stale Data: Vulnerable: Clear CPU buffers attempted, no microcode
+[    0.008000] Freeing SMP alternatives memory: 36K
+[    0.122848] APIC calibration not consistent with PM-Timer: 101ms instead of 100ms
+[    0.124000] APIC delta adjusted to PM-Timer: 6264457 (6328598)
+[    0.124000] smpboot: CPU0: Intel(R) Core(TM) i7-10510U CPU @ 1.80GHz (family: 0x6, model: 0x8e, stepping: 0xc)
+[    0.124000] Performance Events: unsupported p6 CPU model 142 no PMU driver, software events only.
+[    0.124000] Hierarchical SRCU implementation.
+[    0.124000] NMI watchdog: Perf event create on CPU 0 failed with -2
+[    0.124000] NMI watchdog: Perf NMI watchdog permanently disabled
+[    0.124000] smp: Bringing up secondary CPUs ...
+[    0.124000] x86: Booting SMP configuration:
+[    0.124000] .... node  #0, CPUs:      #1
+[    0.004000] kvm-clock: cpu 1, msr 1:1ff50041, secondary cpu clock
+[    0.136161] smp: Brought up 1 node, 2 CPUs
+[    0.140000] smpboot: Max logical packages: 1
+[    0.140000] smpboot: Total of 2 processors activated (9216.02 BogoMIPS)
+[    0.141017] devtmpfs: initialized
+[    0.144000] x86/mm: Memory block size: 128MB
+[    0.144000] evm: security.selinux
+[    0.144000] evm: security.SMACK64
+[    0.144000] evm: security.SMACK64EXEC
+[    0.144000] evm: security.SMACK64TRANSMUTE
+[    0.144000] evm: security.SMACK64MMAP
+[    0.144000] evm: security.apparmor
+[    0.144000] evm: security.ima
+[    0.144000] evm: security.capability
+[    0.144942] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.148000] futex hash table entries: 512 (order: 3, 32768 bytes)
+[    0.148000] pinctrl core: initialized pinctrl subsystem
+[    0.148000] RTC time: 21:22:15, date: 06/29/22
+[    0.148000] NET: Registered protocol family 16
+[    0.148000] audit: initializing netlink subsys (disabled)
+[    0.148000] audit: type=2000 audit(1656537741.402:1): state=initialized audit_enabled=0 res=1
+[    0.164198] cpuidle: using governor ladder
+[    0.168000] cpuidle: using governor menu
+[    0.168000] ACPI: bus type PCI registered
+[    0.168000] acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+[    0.168000] PCI: Using configuration type 1 for base access
+[    0.176548] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.184946] ACPI: Added _OSI(Module Device)
+[    0.188000] ACPI: Added _OSI(Processor Device)
+[    0.188000] ACPI: Added _OSI(3.0 _SCP Extensions)
+[    0.188000] ACPI: Added _OSI(Processor Aggregator Device)
+[    0.188000] ACPI: Added _OSI(Linux-Dell-Video)
+[    0.188000] ACPI: Added _OSI(Linux-Lenovo-NV-HDMI-Audio)
+[    0.188000] ACPI: Added _OSI(Linux-HPI-Hybrid-Graphics)
+[    0.192167] ACPI: Executed 1 blocks of module-level executable AML code
+[    0.204638] ACPI: Interpreter enabled
+[    0.208000] ACPI: (supports S0 S5)
+[    0.208000] ACPI: Using IOAPIC for interrupt routing
+[    0.208588] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+[    0.212000] ACPI: Enabled 2 GPEs in block 00 to 07
+[    0.232000] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    0.232000] acpi PNP0A03:00: _OSC: OS supports [ASPM ClockPM Segments MSI]
+[    0.233516] acpi PNP0A03:00: _OSC: not requesting OS control; OS requires [ExtendedConfig ASPM ClockPM MSI]
+[    0.236000] acpi PNP0A03:00: fail to add MMCONFIG information, can't access extended PCI configuration space under this bridge.
+[    0.240099] PCI host bridge to bus 0000:00
+[    0.244000] pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7 window]
+[    0.244000] pci_bus 0000:00: root bus resource [io  0x0d00-0xffff window]
+[    0.244000] pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff window]
+[    0.244000] pci_bus 0000:00: root bus resource [mem 0xe0000000-0xfdffffff window]
+[    0.244000] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.252000] pci 0000:00:01.1: legacy IDE quirk: reg 0x10: [io  0x01f0-0x01f7]
+[    0.252000] pci 0000:00:01.1: legacy IDE quirk: reg 0x14: [io  0x03f6]
+[    0.252000] pci 0000:00:01.1: legacy IDE quirk: reg 0x18: [io  0x0170-0x0177]
+[    0.252000] pci 0000:00:01.1: legacy IDE quirk: reg 0x1c: [io  0x0376]
+[    0.276000] pci 0000:00:07.0: quirk: [io  0x4000-0x403f] claimed by PIIX4 ACPI
+[    0.276000] pci 0000:00:07.0: quirk: [io  0x4100-0x410f] claimed by PIIX4 SMB
+[    0.289234] ACPI: PCI Interrupt Link [LNKA] (IRQs 5 9 10 *11)
+[    0.292789] ACPI: PCI Interrupt Link [LNKB] (IRQs 5 9 *10 11)
+[    0.296000] ACPI: PCI Interrupt Link [LNKC] (IRQs 5 *9 10 11)
+[    0.296000] ACPI: PCI Interrupt Link [LNKD] (IRQs 5 9 10 *11)
+[    0.296000] SCSI subsystem initialized
+[    0.296407] pci 0000:00:02.0: vgaarb: setting as boot VGA device
+[    0.300000] pci 0000:00:02.0: vgaarb: VGA device added: decodes=io+mem,owns=io+mem,locks=none
+[    0.300000] pci 0000:00:02.0: vgaarb: bridge control possible
+[    0.300000] vgaarb: loaded
+[    0.300000] ACPI: bus type USB registered
+[    0.300000] usbcore: registered new interface driver usbfs
+[    0.300000] usbcore: registered new interface driver hub
+[    0.300000] usbcore: registered new device driver usb
+[    0.300485] EDAC MC: Ver: 3.0.0
+[    0.305200] PCI: Using ACPI for IRQ routing
+[    0.308690] NetLabel: Initializing
+[    0.312000] NetLabel:  domain hash size = 128
+[    0.312000] NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+[    0.312000] NetLabel:  unlabeled traffic allowed by default
+[    0.312639] clocksource: Switched to clocksource kvm-clock
+[    0.316000] VFS: Disk quotas dquot_6.6.0
+[    0.316000] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.316000] AppArmor: AppArmor Filesystem Enabled
+[    0.316000] pnp: PnP ACPI init
+[    0.429896] pnp: PnP ACPI: found 3 devices
+[    0.525404] clocksource: acpi_pm: mask: 0xffffff max_cycles: 0xffffff, max_idle_ns: 2085701024 ns
+[    0.528315] NET: Registered protocol family 2
+[    0.528315] IP idents hash table entries: 65536 (order: 7, 524288 bytes)
+[    0.528315] TCP established hash table entries: 32768 (order: 6, 262144 bytes)
+[    0.567458] TCP bind hash table entries: 32768 (order: 7, 524288 bytes)
+[    0.567458] TCP: Hash tables configured (established 32768 bind 32768)
+[    0.567458] UDP hash table entries: 2048 (order: 4, 65536 bytes)
+[    0.567458] UDP-Lite hash table entries: 2048 (order: 4, 65536 bytes)
+[    0.567458] NET: Registered protocol family 1
+[    0.567458] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+[    0.567458] pci 0000:00:01.0: Activating ISA DMA hang workarounds
+[    0.567458] pci 0000:00:02.0: Video device with shadowed ROM at [mem 0x000c0000-0x000dffff]
+[    0.567458] Unpacking initramfs...
+[    0.567458] Freeing initrd memory: 19532K
+[    0.567458] PCI-DMA: Using software bounce buffering for IO (SWIOTLB)
+[    0.567458] software IO TLB: mapped [mem 0xdbff0000-0xdfff0000] (64MB)
+[    1.915501] clocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x2135fd711f6, max_idle_ns: 440795262176 ns
+[    1.918410] platform rtc_cmos: registered platform RTC device (no PNP device found)
+[    1.918410] Scanning for low memory corruption every 60 seconds
+[    1.958567] Initialise system trusted keyrings
+[    1.961448] Key type blacklist registered
+[    1.974272] workingset: timestamp_bits=36 max_order=20 bucket_order=0
+[    1.977897] zbud: loaded
+[    1.995610] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    2.005506] fuse init (API version 7.26)
+[    2.046870] Key type asymmetric registered
+[    2.050853] Asymmetric key parser 'x509' registered
+[    2.050853] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 246)
+[    2.071491] io scheduler noop registered
+[    2.074977] io scheduler deadline registered
+[    2.074977] io scheduler cfq registered (default)
+[    2.094302] ACPI: AC Adapter [AC] (off-line)
+[    2.098127] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+[    2.112806] ACPI: Power Button [PWRF]
+[    2.116613] input: Sleep Button as /devices/LNXSYSTM:00/LNXSLPBN:00/input/input1
+[    2.116613] ACPI: Sleep Button [SLPF]
+[    2.140675] Serial: 8250/16550 driver, 32 ports, IRQ sharing enabled
+[    2.141325] ACPI: Battery Slot [BAT0] (battery present)
+[    2.194133] 00:02: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+[    2.196140] Linux agpgart interface v0.103
+[    2.235000] loop: module loaded
+[    2.244777] scsi host0: ata_piix
+[    2.252800] scsi host1: ata_piix
+[    2.256425] ata1: PATA max UDMA/33 cmd 0x1f0 ctl 0x3f6 bmdma 0xd000 irq 14
+[    2.256425] ata2: PATA max UDMA/33 cmd 0x170 ctl 0x376 bmdma 0xd008 irq 15
+[    2.282973] tun: Universal TUN/TAP device driver, 1.6
+[    2.286358] PPP generic driver version 2.4.2
+[    2.286358] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    2.286358] ehci-pci: EHCI PCI platform driver
+[    2.286358] ehci-platform: EHCI generic platform driver
+[    2.286358] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    2.286358] ohci-pci: OHCI PCI platform driver
+[    2.286358] ohci-platform: OHCI generic platform driver
+[    2.286358] uhci_hcd: USB Universal Host Controller Interface driver
+[    2.286358] i8042: PNP: PS/2 Controller [PNP0303:PS2K,PNP0f03:PS2M] at 0x60,0x64 irq 1,12
+[    2.396209] serio: i8042 KBD port at 0x60,0x64 irq 1
+[    2.396620] serio: i8042 AUX port at 0x60,0x64 irq 12
+[    2.396620] mousedev: PS/2 mouse device common for all mice
+[    2.434875] rtc_cmos rtc_cmos: rtc core: registered rtc_cmos as rtc0
+[    2.434875] rtc_cmos rtc_cmos: alarms up to one day, 114 bytes nvram
+[    2.434875] i2c /dev entries driver
+[    2.434875] device-mapper: uevent: version 1.0.3
+[    2.434875] device-mapper: ioctl: 4.37.0-ioctl (2017-09-20) initialised: dm-devel@redhat.com
+[    2.505752] ledtrig-cpu: registered to indicate activity on CPUs
+[    2.509363] NET: Registered protocol family 10
+[    2.538877] input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input2
+[    2.579347] Segment Routing with IPv6
+[    2.583277] NET: Registered protocol family 17
+[    2.602155] Key type dns_resolver registered
+[    2.614271] mce: Using 0 MCE banks
+[    2.617534] RAS: Correctable Errors collector initialized.
+[    2.617534] sched_clock: Marking stable (2613534736, 0)->(6040266848, -3426732112)
+[    2.683666] registered taskstats version 1
+[    2.698161] Loading compiled-in X.509 certificates
+[    2.731669] Loaded X.509 cert 'Build time autogenerated kernel key: 979a73de01c113c656ad15d85e66cc9cfc8996b6'
+[    2.767101] Loaded X.509 cert 'Canonical Ltd. Live Patch Signing: 14df34d1a87cf37625abec039ef2bf521249b969'
+[    2.801324] Loaded X.509 cert 'Canonical Ltd. Kernel Module Signing: 88f752e560a1e0737e31163a466ad7b70a850c19'
+[    2.837722] blacklist: Loading compiled-in revocation X.509 certificates
+[    2.851637] Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing: 61482aa2830d0ab2ad5af10b7250da9033ddcef0'
+[    2.869631] zswap: loaded using pool lzo/zbud
+[    2.896472] Key type big_key registered
+[    2.901593] Key type trusted registered
+[    2.913934] Key type encrypted registered
+[    2.919480] AppArmor: AppArmor sha1 policy hashing enabled
+[    2.927319] ima: No TPM chip found, activating TPM-bypass! (rc=-19)
+[    2.939094] ima: Allocated hash algorithm: sha1
+[    2.947818] evm: HMAC attrs: 0x1
+[    2.956733]   Magic number: 10:232:400
+[    2.965341] rtc_cmos rtc_cmos: setting system clock to 2022-06-29 21:22:18 UTC (1656537738)
+[    2.981584] BIOS EDD facility v0.16 2004-Jun-25, 0 devices found
+[    2.992486] EDD information not available.
+[    3.006766] Freeing unused kernel image memory: 2468K
+[    3.031177] Write protecting the kernel read-only data: 20480k
+[    3.044859] Freeing unused kernel image memory: 2008K
+[    3.055574] Freeing unused kernel image memory: 1820K
+[    3.083735] x86/mm: Checked W+X mappings: passed, no W+X pages found.
+Loading, please wait...
+starting version 237
+[   28.146286] watchdog: BUG: soft lockup - CPU#1 stuck for 23s! [systemd-udevd:173]
+[   28.159551] Modules linked in:
+[   28.165626] CPU: 1 PID: 173 Comm: systemd-udevd Not tainted 4.15.0-187-generic #198-Ubuntu
+[   28.177116] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[   28.187565] RIP: 0010:smp_call_function_single+0xdc/0x100
+[   28.197814] RSP: 0018:ffffaaca40ac7a80 EFLAGS: 00010202 ORIG_RAX: ffffffffffffff11
+[   28.207478] RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+[   28.217048] RDX: 0000000000000001 RSI: 00000000000000fb RDI: 0000000000000286
+[   28.229867] RBP: ffffaaca40ac7ad0 R08: 0000000000000000 R09: 0000000000000003
+[   28.242430] R10: ffffaaca40ac7ae8 R11: ffffaaca40ac7c40 R12: ffffffff92c608e0
+[   28.254705] R13: 0000000000000001 R14: ffffffff9167dfd0 R15: 0000000000000000
+[   28.268294] FS:  00007f741dc84680(0000) GS:ffff9f05dfd00000(0000) knlGS:0000000000000000
+[   28.282236] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   28.292465] CR2: 00007f741dc7c6c2 CR3: 0000000116308001 CR4: 00000000000206e0
+[   28.305768] Call Trace:
+[   28.310809]  ? load_new_mm_cr3+0xf0/0xf0
+[   28.316953]  ? _paravirt_ident_32+0x10/0x10
+[   28.322527]  ? find_next_bit+0xb/0x10
+[   28.328331]  ? cpumask_next_and+0x2c/0x40
+[   28.334352]  smp_call_function_many+0x1cc/0x250
+[   28.341862]  ? smp_call_function_many+0x1cc/0x250
+[   28.349014]  ? load_new_mm_cr3+0xf0/0xf0
+[   28.354687]  on_each_cpu+0x2d/0x60
+[   28.360703]  flush_tlb_kernel_range+0x4b/0x80
+[   28.369234]  ? cpumask_next+0x1b/0x20
+[   28.375056]  ? purge_fragmented_blocks_allcpus+0x53/0x1d0
+[   28.382639]  __purge_vmap_area_lazy+0x77/0x160
+[   28.389580]  vm_unmap_aliases+0xf9/0x130
+[   28.397442]  change_page_attr_set_clr+0xd5/0x3a0
+[   28.406306]  ? kvm_sched_clock_read+0x1e/0x30
+[   28.413284]  set_memory_ro+0x29/0x30
+[   28.418906]  frob_text.isra.34+0x23/0x30
+[   28.424581]  module_enable_ro.part.55+0x35/0x90
+[   28.431419]  load_module+0x1379/0x2000
+[   28.437097]  ? ima_post_read_file+0x96/0xa0
+[   28.443168]  SYSC_finit_module+0xfc/0x120
+[   28.449329]  ? SYSC_finit_module+0xfc/0x120
+[   28.456276]  SyS_finit_module+0xe/0x10
+[   28.461460]  do_syscall_64+0x73/0x130
+[   28.466716]  entry_SYSCALL_64_after_hwframe+0x41/0xa6
+[   28.473485] RIP: 0033:0x7f741d78b539
+[   28.479003] RSP: 002b:00007ffd0a98b308 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[   28.489717] RAX: ffffffffffffffda RBX: 000055c5196e5a00 RCX: 00007f741d78b539
+[   28.501233] RDX: 0000000000000000 RSI: 00007f741d46a105 RDI: 0000000000000005
+[   28.511042] RBP: 00007f741d46a105 R08: 0000000000000000 R09: 000055c5196cda60
+[   28.521221] R10: 0000000000000005 R11: 0000000000000246 R12: 0000000000000000
+[   28.531084] R13: 000055c5196d0710 R14: 0000000000020000 R15: 000055c5196e5a00
+[   28.541422] Code: 28 00 00 00 75 40 48 83 c4 48 41 5a 5d 49 8d 62 f8 c3 48 89 d1 48 89 f2 48 8d 75 b0 e8 1e fe ff ff 8b 55 c8 83 e2 01 74 0a f3 90 <8b> 55 c8 83 e2 01 75 f6 eb c2 8b 05 34 00 84 01 85 c0 75 81 0f 
+[   56.139822] watchdog: BUG: soft lockup - CPU#1 stuck for 23s! [systemd-udevd:173]
+[   56.152689] Modules linked in:
+[   56.157796] CPU: 1 PID: 173 Comm: systemd-udevd Tainted: G             L   4.15.0-187-generic #198-Ubuntu
+[   56.171213] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[   56.181531] RIP: 0010:smp_call_function_single+0xdc/0x100
+[   56.188428] RSP: 0018:ffffaaca40ac7a80 EFLAGS: 00010202 ORIG_RAX: ffffffffffffff11
+[   56.199640] RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+[   56.209920] RDX: 0000000000000001 RSI: 00000000000000fb RDI: 0000000000000286
+[   56.222371] RBP: ffffaaca40ac7ad0 R08: 0000000000000000 R09: 0000000000000003
+[   56.232104] R10: ffffaaca40ac7ae8 R11: ffffaaca40ac7c40 R12: ffffffff92c608e0
+[   56.242187] R13: 0000000000000001 R14: ffffffff9167dfd0 R15: 0000000000000000
+[   56.252950] FS:  00007f741dc84680(0000) GS:ffff9f05dfd00000(0000) knlGS:0000000000000000
+[   56.266929] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   56.277136] CR2: 00007f741dc7c6c2 CR3: 0000000116308001 CR4: 00000000000206e0
+[   56.297541] Call Trace:
+[   56.306554]  ? load_new_mm_cr3+0xf0/0xf0
+[   56.335923]  ? _paravirt_ident_32+0x10/0x10
+[   56.355139]  ? find_next_bit+0xb/0x10
+[   56.368880]  ? cpumask_next_and+0x2c/0x40
+[   56.381842]  smp_call_function_many+0x1cc/0x250
+[   56.392937]  ? smp_call_function_many+0x1cc/0x250
+[   56.406884]  ? load_new_mm_cr3+0xf0/0xf0
+[   56.416099]  on_each_cpu+0x2d/0x60
+[   56.425915]  flush_tlb_kernel_range+0x4b/0x80
+[   56.436040]  ? cpumask_next+0x1b/0x20
+[   56.443334]  ? purge_fragmented_blocks_allcpus+0x53/0x1d0
+[   56.453943]  __purge_vmap_area_lazy+0x77/0x160
+[   56.461799]  vm_unmap_aliases+0xf9/0x130
+[   56.470484]  change_page_attr_set_clr+0xd5/0x3a0
+[   56.479077]  ? kvm_sched_clock_read+0x1e/0x30
+[   56.488634]  set_memory_ro+0x29/0x30
+[   56.495286]  frob_text.isra.34+0x23/0x30
+[   56.504482]  module_enable_ro.part.55+0x35/0x90
+[   56.513288]  load_module+0x1379/0x2000
+[   56.522002]  ? ima_post_read_file+0x96/0xa0
+[   56.532052]  SYSC_finit_module+0xfc/0x120
+[   56.541370]  ? SYSC_finit_module+0xfc/0x120
+[   56.550526]  SyS_finit_module+0xe/0x10
+[   56.556970]  do_syscall_64+0x73/0x130
+[   56.563859]  entry_SYSCALL_64_after_hwframe+0x41/0xa6
+[   56.575269] RIP: 0033:0x7f741d78b539
+[   56.582954] RSP: 002b:00007ffd0a98b308 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[   56.597263] RAX: ffffffffffffffda RBX: 000055c5196e5a00 RCX: 00007f741d78b539
+[   56.617428] RDX: 0000000000000000 RSI: 00007f741d46a105 RDI: 0000000000000005
+[   56.630661] RBP: 00007f741d46a105 R08: 0000000000000000 R09: 000055c5196cda60
+[   56.644378] R10: 0000000000000005 R11: 0000000000000246 R12: 0000000000000000
+[   56.657357] R13: 000055c5196d0710 R14: 0000000000020000 R15: 000055c5196e5a00
+[   56.668668] Code: 28 00 00 00 75 40 48 83 c4 48 41 5a 5d 49 8d 62 f8 c3 48 89 d1 48 89 f2 48 8d 75 b0 e8 1e fe ff ff 8b 55 c8 83 e2 01 74 0a f3 90 <8b> 55 c8 83 e2 01 75 f6 eb c2 8b 05 34 00 84 01 85 c0 75 81 0f 
+[   84.148732] watchdog: BUG: soft lockup - CPU#1 stuck for 22s! [systemd-udevd:173]
+[   84.160967] Modules linked in:
+[   84.167562] CPU: 1 PID: 173 Comm: systemd-udevd Tainted: G             L   4.15.0-187-generic #198-Ubuntu
+[   84.183235] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[   84.196259] RIP: 0010:smp_call_function_single+0xdc/0x100
+[   84.205442] RSP: 0018:ffffaaca40ac7a80 EFLAGS: 00010202 ORIG_RAX: ffffffffffffff11
+[   84.218059] RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+[   84.227319] RDX: 0000000000000001 RSI: 00000000000000fb RDI: 0000000000000286
+[   84.237436] RBP: ffffaaca40ac7ad0 R08: 0000000000000000 R09: 0000000000000003
+[   84.247279] R10: ffffaaca40ac7ae8 R11: ffffaaca40ac7c40 R12: ffffffff92c608e0
+[   84.258215] R13: 0000000000000001 R14: ffffffff9167dfd0 R15: 0000000000000000
+[   84.269384] FS:  00007f741dc84680(0000) GS:ffff9f05dfd00000(0000) knlGS:0000000000000000
+[   84.281854] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   84.291133] CR2: 00007f741dc7c6c2 CR3: 0000000116308001 CR4: 00000000000206e0
+[   84.302371] Call Trace:
+[   84.306601]  ? load_new_mm_cr3+0xf0/0xf0
+[   84.313272]  ? _paravirt_ident_32+0x10/0x10
+[   84.321188]  ? find_next_bit+0xb/0x10
+[   84.328480]  ? cpumask_next_and+0x2c/0x40
+[   84.336030]  smp_call_function_many+0x1cc/0x250
+[   84.345044]  ? smp_call_function_many+0x1cc/0x250
+[   84.354179]  ? load_new_mm_cr3+0xf0/0xf0
+[   84.361278]  on_each_cpu+0x2d/0x60
+[   84.369112]  flush_tlb_kernel_range+0x4b/0x80
+[   84.378442]  ? cpumask_next+0x1b/0x20
+[   84.387650]  ? purge_fragmented_blocks_allcpus+0x53/0x1d0
+[   84.399303]  __purge_vmap_area_lazy+0x77/0x160
+[   84.408043]  vm_unmap_aliases+0xf9/0x130
+[   84.416116]  change_page_attr_set_clr+0xd5/0x3a0
+[   84.424582]  ? kvm_sched_clock_read+0x1e/0x30
+[   84.433152]  set_memory_ro+0x29/0x30
+[   84.439862]  frob_text.isra.34+0x23/0x30
+[   84.448195]  module_enable_ro.part.55+0x35/0x90
+[   84.457889]  load_module+0x1379/0x2000
+[   84.466502]  ? ima_post_read_file+0x96/0xa0
+[   84.474668]  SYSC_finit_module+0xfc/0x120
+[   84.481923]  ? SYSC_finit_module+0xfc/0x120
+[   84.490655]  SyS_finit_module+0xe/0x10
+[   84.498680]  do_syscall_64+0x73/0x130
+[   84.506294]  entry_SYSCALL_64_after_hwframe+0x41/0xa6
+[   84.517348] RIP: 0033:0x7f741d78b539
+[   84.525071] RSP: 002b:00007ffd0a98b308 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[   84.540237] RAX: ffffffffffffffda RBX: 000055c5196e5a00 RCX: 00007f741d78b539
+[   84.555773] RDX: 0000000000000000 RSI: 00007f741d46a105 RDI: 0000000000000005
+[   84.569701] RBP: 00007f741d46a105 R08: 0000000000000000 R09: 000055c5196cda60
+[   84.582956] R10: 0000000000000005 R11: 0000000000000246 R12: 0000000000000000
+[   84.596747] R13: 000055c5196d0710 R14: 0000000000020000 R15: 000055c5196e5a00
+[   84.609836] Code: 28 00 00 00 75 40 48 83 c4 48 41 5a 5d 49 8d 62 f8 c3 48 89 d1 48 89 f2 48 8d 75 b0 e8 1e fe ff ff 8b 55 c8 83 e2 01 74 0a f3 90 <8b> 55 c8 83 e2 01 75 f6 eb c2 8b 05 34 00 84 01 85 c0 75 81 0f 
+[  112.146118] watchdog: BUG: soft lockup - CPU#1 stuck for 22s! [systemd-udevd:173]
+[  112.156894] Modules linked in:
+[  112.161196] CPU: 1 PID: 173 Comm: systemd-udevd Tainted: G             L   4.15.0-187-generic #198-Ubuntu
+[  112.176025] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[  112.187426] RIP: 0010:smp_call_function_single+0xdc/0x100
+[  112.195238] RSP: 0018:ffffaaca40ac7a80 EFLAGS: 00010202 ORIG_RAX: ffffffffffffff11
+[  112.205397] RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+[  112.214412] RDX: 0000000000000001 RSI: 00000000000000fb RDI: 0000000000000286
+[  112.226033] RBP: ffffaaca40ac7ad0 R08: 0000000000000000 R09: 0000000000000003
+[  112.239348] R10: ffffaaca40ac7ae8 R11: ffffaaca40ac7c40 R12: ffffffff92c608e0
+[  112.250993] R13: 0000000000000001 R14: ffffffff9167dfd0 R15: 0000000000000000
+[  112.262316] FS:  00007f741dc84680(0000) GS:ffff9f05dfd00000(0000) knlGS:0000000000000000
+[  112.273030] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  112.280238] CR2: 00007f741dc7c6c2 CR3: 0000000116308001 CR4: 00000000000206e0
+[  112.288684] Call Trace:
+[  112.291945]  ? load_new_mm_cr3+0xf0/0xf0
+[  112.298009]  ? _paravirt_ident_32+0x10/0x10
+[  112.303697]  ? find_next_bit+0xb/0x10
+[  112.308394]  ? cpumask_next_and+0x2c/0x40
+[  112.313375]  smp_call_function_many+0x1cc/0x250
+[  112.319933]  ? smp_call_function_many+0x1cc/0x250
+[  112.327692]  ? load_new_mm_cr3+0xf0/0xf0
+[  112.333863]  on_each_cpu+0x2d/0x60
+[  112.340171]  flush_tlb_kernel_range+0x4b/0x80
+[  112.347590]  ? cpumask_next+0x1b/0x20
+[  112.354019]  ? purge_fragmented_blocks_allcpus+0x53/0x1d0
+[  112.363416]  __purge_vmap_area_lazy+0x77/0x160
+[  112.371001]  vm_unmap_aliases+0xf9/0x130
+[  112.376485]  change_page_attr_set_clr+0xd5/0x3a0
+[  112.382986]  ? kvm_sched_clock_read+0x1e/0x30
+[  112.388323]  set_memory_ro+0x29/0x30
+[  112.392725]  frob_text.isra.34+0x23/0x30
+[  112.398391]  module_enable_ro.part.55+0x35/0x90
+[  112.404447]  load_module+0x1379/0x2000
+[  112.409130]  ? ima_post_read_file+0x96/0xa0
+[  112.414100]  SYSC_finit_module+0xfc/0x120
+[  112.418955]  ? SYSC_finit_module+0xfc/0x120
+[  112.425143]  SyS_finit_module+0xe/0x10
+[  112.430162]  do_syscall_64+0x73/0x130
+[  112.435046]  entry_SYSCALL_64_after_hwframe+0x41/0xa6
+[  112.441597] RIP: 0033:0x7f741d78b539
+[  112.446812] RSP: 002b:00007ffd0a98b308 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[  112.455994] RAX: ffffffffffffffda RBX: 000055c5196e5a00 RCX: 00007f741d78b539
+[  112.464531] RDX: 0000000000000000 RSI: 00007f741d46a105 RDI: 0000000000000005
+[  112.473729] RBP: 00007f741d46a105 R08: 0000000000000000 R09: 000055c5196cda60
+[  112.485530] R10: 0000000000000005 R11: 0000000000000246 R12: 0000000000000000
+[  112.498454] R13: 000055c5196d0710 R14: 0000000000020000 R15: 000055c5196e5a00
+[  112.508991] Code: 28 00 00 00 75 40 48 83 c4 48 41 5a 5d 49 8d 62 f8 c3 48 89 d1 48 89 f2 48 8d 75 b0 e8 1e fe ff ff 8b 55 c8 83 e2 01 74 0a f3 90 <8b> 55 c8 83 e2 01 75 f6 eb c2 8b 05 34 00 84 01 85 c0 75 81 0f 
+[  140.145945] watchdog: BUG: soft lockup - CPU#1 stuck for 22s! [systemd-udevd:173]
+[  140.156379] Modules linked in:
+[  140.160776] CPU: 1 PID: 173 Comm: systemd-udevd Tainted: G             L   4.15.0-187-generic #198-Ubuntu
+[  140.173427] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[  140.183886] RIP: 0010:smp_call_function_single+0xdc/0x100
+[  140.191052] RSP: 0018:ffffaaca40ac7a80 EFLAGS: 00010202 ORIG_RAX: ffffffffffffff11
+[  140.200686] RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+[  140.209197] RDX: 0000000000000001 RSI: 00000000000000fb RDI: 0000000000000286
+[  140.219097] RBP: ffffaaca40ac7ad0 R08: 0000000000000000 R09: 0000000000000003
+[  140.229365] R10: ffffaaca40ac7ae8 R11: ffffaaca40ac7c40 R12: ffffffff92c608e0
+[  140.240757] R13: 0000000000000001 R14: ffffffff9167dfd0 R15: 0000000000000000
+[  140.252181] FS:  00007f741dc84680(0000) GS:ffff9f05dfd00000(0000) knlGS:0000000000000000
+[  140.264428] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  140.272114] CR2: 00007f741dc7c6c2 CR3: 0000000116308001 CR4: 00000000000206e0
+[  140.281249] Call Trace:
+[  140.284752]  ? load_new_mm_cr3+0xf0/0xf0
+[  140.290697]  ? _paravirt_ident_32+0x10/0x10
+[  140.296568]  ? find_next_bit+0xb/0x10
+[  140.302943]  ? cpumask_next_and+0x2c/0x40
+[  140.312628]  smp_call_function_many+0x1cc/0x250
+[  140.323458]  ? smp_call_function_many+0x1cc/0x250
+[  140.336880]  ? load_new_mm_cr3+0xf0/0xf0
+[  140.349956]  on_each_cpu+0x2d/0x60
+[  140.359021]  flush_tlb_kernel_range+0x4b/0x80
+[  140.371252]  ? cpumask_next+0x1b/0x20
+[  140.381841]  ? purge_fragmented_blocks_allcpus+0x53/0x1d0
+[  140.397637]  __purge_vmap_area_lazy+0x77/0x160
+[  140.407085]  vm_unmap_aliases+0xf9/0x130
+[  140.417414]  change_page_attr_set_clr+0xd5/0x3a0
+[  140.429869]  ? kvm_sched_clock_read+0x1e/0x30
+[  140.443246]  set_memory_ro+0x29/0x30
+[  140.452091]  frob_text.isra.34+0x23/0x30
+[  140.460888]  module_enable_ro.part.55+0x35/0x90
+[  140.468872]  load_module+0x1379/0x2000
+[  140.475425]  ? ima_post_read_file+0x96/0xa0
+[  140.483312]  SYSC_finit_module+0xfc/0x120
+[  140.490467]  ? SYSC_finit_module+0xfc/0x120
+[  140.496301]  SyS_finit_module+0xe/0x10
+[  140.503141]  do_syscall_64+0x73/0x130
+[  140.509709]  entry_SYSCALL_64_after_hwframe+0x41/0xa6
+[  140.518471] RIP: 0033:0x7f741d78b539
+[  140.524651] RSP: 002b:00007ffd0a98b308 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[  140.535599] RAX: ffffffffffffffda RBX: 000055c5196e5a00 RCX: 00007f741d78b539
+[  140.547903] RDX: 0000000000000000 RSI: 00007f741d46a105 RDI: 0000000000000005
+[  140.559013] RBP: 00007f741d46a105 R08: 0000000000000000 R09: 000055c5196cda60
+[  140.570345] R10: 0000000000000005 R11: 0000000000000246 R12: 0000000000000000
+[  140.582307] R13: 000055c5196d0710 R14: 0000000000020000 R15: 000055c5196e5a00
+[  140.592880] Code: 28 00 00 00 75 40 48 83 c4 48 41 5a 5d 49 8d 62 f8 c3 48 89 d1 48 89 f2 48 8d 75 b0 e8 1e fe ff ff 8b 55 c8 83 e2 01 74 0a f3 90 <8b> 55 c8 83 e2 01 75 f6 eb c2 8b 05 34 00 84 01 85 c0 75 81 0f 
+[  168.148820] watchdog: BUG: soft lockup - CPU#1 stuck for 22s! [systemd-udevd:173]
+[  168.159651] Modules linked in:
+[  168.165416] CPU: 1 PID: 173 Comm: systemd-udevd Tainted: G             L   4.15.0-187-generic #198-Ubuntu
+[  168.178694] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[  168.189232] RIP: 0010:smp_call_function_single+0xdc/0x100
+[  168.197056] RSP: 0018:ffffaaca40ac7a80 EFLAGS: 00010202 ORIG_RAX: ffffffffffffff11
+[  168.207128] RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+[  168.216767] RDX: 0000000000000001 RSI: 00000000000000fb RDI: 0000000000000286
+[  168.225684] RBP: ffffaaca40ac7ad0 R08: 0000000000000000 R09: 0000000000000003
+[  168.234507] R10: ffffaaca40ac7ae8 R11: ffffaaca40ac7c40 R12: ffffffff92c608e0
+[  168.242818] R13: 0000000000000001 R14: ffffffff9167dfd0 R15: 0000000000000000
+[  168.252459] FS:  00007f741dc84680(0000) GS:ffff9f05dfd00000(0000) knlGS:0000000000000000
+[  168.263591] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  168.272575] CR2: 00007f741dc7c6c2 CR3: 0000000116308001 CR4: 00000000000206e0
+[  168.284648] Call Trace:
+[  168.288725]  ? load_new_mm_cr3+0xf0/0xf0
+[  168.294219]  ? _paravirt_ident_32+0x10/0x10
+[  168.300364]  ? find_next_bit+0xb/0x10
+[  168.305456]  ? cpumask_next_and+0x2c/0x40
+[  168.310905]  smp_call_function_many+0x1cc/0x250
+[  168.317011]  ? smp_call_function_many+0x1cc/0x250
+[  168.323651]  ? load_new_mm_cr3+0xf0/0xf0
+[  168.329072]  on_each_cpu+0x2d/0x60
+[  168.333437]  flush_tlb_kernel_range+0x4b/0x80
+[  168.339005]  ? cpumask_next+0x1b/0x20
+[  168.345787]  ? purge_fragmented_blocks_allcpus+0x53/0x1d0
+[  168.354911]  __purge_vmap_area_lazy+0x77/0x160
+[  168.362823]  vm_unmap_aliases+0xf9/0x130
+[  168.369736]  change_page_attr_set_clr+0xd5/0x3a0
+[  168.375814]  ? kvm_sched_clock_read+0x1e/0x30
+[  168.382557]  set_memory_ro+0x29/0x30
+[  168.388668]  frob_text.isra.34+0x23/0x30
+[  168.393890]  module_enable_ro.part.55+0x35/0x90
+[  168.399504]  load_module+0x1379/0x2000
+[  168.406053]  ? ima_post_read_file+0x96/0xa0
+[  168.413286]  SYSC_finit_module+0xfc/0x120
+[  168.419054]  ? SYSC_finit_module+0xfc/0x120
+[  168.425366]  SyS_finit_module+0xe/0x10
+[  168.431983]  do_syscall_64+0x73/0x130
+[  168.437828]  entry_SYSCALL_64_after_hwframe+0x41/0xa6
+[  168.446815] RIP: 0033:0x7f741d78b539
+[  168.453037] RSP: 002b:00007ffd0a98b308 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[  168.466394] RAX: ffffffffffffffda RBX: 000055c5196e5a00 RCX: 00007f741d78b539
+[  168.478294] RDX: 0000000000000000 RSI: 00007f741d46a105 RDI: 0000000000000005
+[  168.489634] RBP: 00007f741d46a105 R08: 0000000000000000 R09: 000055c5196cda60
+[  168.501874] R10: 0000000000000005 R11: 0000000000000246 R12: 0000000000000000
+[  168.513106] R13: 000055c5196d0710 R14: 0000000000020000 R15: 000055c5196e5a00
+[  168.522429] Code: 28 00 00 00 75 40 48 83 c4 48 41 5a 5d 49 8d 62 f8 c3 48 89 d1 48 89 f2 48 8d 75 b0 e8 1e fe ff ff 8b 55 c8 83 e2 01 74 0a f3 90 <8b> 55 c8 83 e2 01 75 f6 eb c2 8b 05 34 00 84 01 85 c0 75 81 0f 
+[  196.139317] watchdog: BUG: soft lockup - CPU#1 stuck for 22s! [systemd-udevd:173]
+[  196.150704] Modules linked in:
+[  196.156180] CPU: 1 PID: 173 Comm: systemd-udevd Tainted: G             L   4.15.0-187-generic #198-Ubuntu
+[  196.172586] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[  196.186377] RIP: 0010:smp_call_function_single+0xdc/0x100
+[  196.195783] RSP: 0018:ffffaaca40ac7a80 EFLAGS: 00010202 ORIG_RAX: ffffffffffffff11
+[  196.208039] RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+[  196.220371] RDX: 0000000000000001 RSI: 00000000000000fb RDI: 0000000000000286
+[  196.232142] RBP: ffffaaca40ac7ad0 R08: 0000000000000000 R09: 0000000000000003
+[  196.243922] R10: ffffaaca40ac7ae8 R11: ffffaaca40ac7c40 R12: ffffffff92c608e0
+[  196.256171] R13: 0000000000000001 R14: ffffffff9167dfd0 R15: 0000000000000000
+[  196.267865] FS:  00007f741dc84680(0000) GS:ffff9f05dfd00000(0000) knlGS:0000000000000000
+[  196.279172] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  196.286762] CR2: 00007f741dc7c6c2 CR3: 0000000116308001 CR4: 00000000000206e0
+[  196.296069] Call Trace:
+[  196.300091]  ? load_new_mm_cr3+0xf0/0xf0
+[  196.305422]  ? _paravirt_ident_32+0x10/0x10
+[  196.311064]  ? find_next_bit+0xb/0x10
+[  196.315998]  ? cpumask_next_and+0x2c/0x40
+[  196.323110]  smp_call_function_many+0x1cc/0x250
+[  196.331143]  ? smp_call_function_many+0x1cc/0x250
+[  196.338980]  ? load_new_mm_cr3+0xf0/0xf0
+[  196.346184]  on_each_cpu+0x2d/0x60
+[  196.352341]  flush_tlb_kernel_range+0x4b/0x80
+[  196.358573]  ? cpumask_next+0x1b/0x20
+[  196.363414]  ? purge_fragmented_blocks_allcpus+0x53/0x1d0
+[  196.369789]  __purge_vmap_area_lazy+0x77/0x160
+[  196.375306]  vm_unmap_aliases+0xf9/0x130
+[  196.380768]  change_page_attr_set_clr+0xd5/0x3a0
+[  196.389095]  ? kvm_sched_clock_read+0x1e/0x30
+[  196.396434]  set_memory_ro+0x29/0x30
+[  196.401056]  frob_text.isra.34+0x23/0x30
+[  196.406416]  module_enable_ro.part.55+0x35/0x90
+[  196.412633]  load_module+0x1379/0x2000
+[  196.417767]  ? ima_post_read_file+0x96/0xa0
+[  196.423367]  SYSC_finit_module+0xfc/0x120
+[  196.429186]  ? SYSC_finit_module+0xfc/0x120
+[  196.434815]  SyS_finit_module+0xe/0x10
+[  196.441524]  do_syscall_64+0x73/0x130
+[  196.448468]  entry_SYSCALL_64_after_hwframe+0x41/0xa6
+[  196.457046] RIP: 0033:0x7f741d78b539
+[  196.463360] RSP: 002b:00007ffd0a98b308 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[  196.476760] RAX: ffffffffffffffda RBX: 000055c5196e5a00 RCX: 00007f741d78b539
+[  196.487195] RDX: 0000000000000000 RSI: 00007f741d46a105 RDI: 0000000000000005
+[  196.498590] RBP: 00007f741d46a105 R08: 0000000000000000 R09: 000055c5196cda60
+[  196.511007] R10: 0000000000000005 R11: 0000000000000246 R12: 0000000000000000
+[  196.522040] R13: 000055c5196d0710 R14: 0000000000020000 R15: 000055c5196e5a00
+[  196.532142] Code: 28 00 00 00 75 40 48 83 c4 48 41 5a 5d 49 8d 62 f8 c3 48 89 d1 48 89 f2 48 8d 75 b0 e8 1e fe ff ff 8b 55 c8 83 e2 01 74 0a f3 90 <8b> 55 c8 83 e2 01 75 f6 eb c2 8b 05 34 00 84 01 85 c0 75 81 0f 
